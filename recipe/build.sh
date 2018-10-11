@@ -6,7 +6,8 @@ if [[ $target_platform =~ linux.* ]] || [[ $target_platform == win-32 ]] || [[ $
   grep -v '^Priority: ' DESCRIPTION.old > DESCRIPTION
   echo "About to build"
   env
-  $R CMD INSTALL --build .
+  $CC --version
+  $R CMD INSTALL --configure-vars="CC=$CC" --build .
 else
   mkdir -p $PREFIX/lib/R/library/Matching
   mv * $PREFIX/lib/R/library/Matching
