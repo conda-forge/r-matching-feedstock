@@ -4,10 +4,7 @@ if [[ $target_platform =~ linux.* ]] || [[ $target_platform == win-32 ]] || [[ $
   export DISABLE_AUTOBREW=1
   mv DESCRIPTION DESCRIPTION.old
   grep -v '^Priority: ' DESCRIPTION.old > DESCRIPTION
-  echo "About to build"
-  env
-  $CC --version
-  $R CMD INSTALL --configure-vars="CC=$CC" --build .
+  $R CMD INSTALL -d --configure-vars="CC=$CC; CFLAGS= " --build .
 else
   mkdir -p $PREFIX/lib/R/library/Matching
   mv * $PREFIX/lib/R/library/Matching
