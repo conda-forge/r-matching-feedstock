@@ -1,4 +1,4 @@
-{% set version = '4.9-2' %}
+{% set version = '4.9-3' %}
 
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
@@ -10,48 +10,59 @@ package:
 source:
   fn: Matching_{{ version }}.tar.gz
   url:
-    - https://cran.r-project.org/src/contrib/Matching_{{ version }}.tar.gz
-    - https://cran.r-project.org/src/contrib/Archive/Matching/Matching_{{ version }}.tar.gz
-
-  sha256: a4173fbb9de5efdd791fad8ecdf6beff106be5c7adfe2ce822eca44303596553
+    - {{ cran_mirror }}/src/contrib/Matching_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/Archive/Matching/Matching_{{ version }}.tar.gz
+  sha256: 1fbf346d75a079f5b23137dd7bc112207db8d64adfd197826ae6b5748600bc02
 
 build:
+  merge_build_host: True  # [win]
   number: 0
-  skip: true  # [win32]
-
   rpaths:
     - lib/R/lib/
     - lib/
 
+# Suggests: parallel, rgenoud (>= 2.12), rbounds
 requirements:
   build:
+    - {{ compiler('c') }}        # [not win]
+    - {{ compiler('cxx') }}      # [not win]
+    - {{native}}toolchain        # [win]
+    - {{posix}}filesystem        # [win]
+    - {{posix}}sed               # [win]
+    - {{posix}}grep              # [win]
+    - {{posix}}autoconf
+    - {{posix}}automake          # [not win]
+    - {{posix}}automake-wrapper  # [win]
+    - {{posix}}pkg-config
+    - {{posix}}make
+    - {{posix}}coreutils         # [win]
+    - {{posix}}zip               # [win]
+
+  host:
     - r-base
     - r-mass >=7.2_1
-    - posix                # [win]
-    - {{native}}toolchain  # [win]
-    - gcc                  # [not win]
 
   run:
     - r-base
+    - {{native}}gcc-libs         # [win]
     - r-mass >=7.2_1
-    - libgcc  # [not win]
 
 test:
   commands:
-    - $R -e "library('Matching')"  # [not win]
+    - $R -e "library('Matching')"           # [not win]
     - "\"%R%\" -e \"library('Matching')\""  # [win]
 
 about:
-  home: http
+  home: http://sekhon.berkeley.edu/matching
   license: GPL-3
   summary: Provides functions for multivariate and propensity score matching  and for finding
     optimal balance based on a genetic search algorithm.  A variety of univariate and
     multivariate metrics to determine if balance has been obtained are also provided.
   license_family: GPL3
-  license_file: '{{ environ["PREFIX"] }}\/lib\/R\/share\/licenses\/GPL-3'  # [unix]
-  license_file: '{{ environ["PREFIX"] }}\R\share\licenses\GPL-3'  # [win]
+
 extra:
    recipe-maintainers:
+    - dpryan79
     - MathiasHaudgaard
     - FrodePedersen
     - ArneKr
