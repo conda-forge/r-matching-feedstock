@@ -1,7 +1,7 @@
 About r-matching
 ================
 
-Home: http
+Home: http://sekhon.berkeley.edu/matching
 
 Package license: GPL-3
 
@@ -14,9 +14,9 @@ Summary: Provides functions for multivariate and propensity score matching  and 
 Current build status
 ====================
 
-[![Linux](https://img.shields.io/circleci/project/github/conda-forge/r-Matching-feedstock/master.svg?label=Linux)](https://circleci.com/gh/conda-forge/r-Matching-feedstock)
-[![OSX](https://img.shields.io/travis/conda-forge/r-Matching-feedstock/master.svg?label=macOS)](https://travis-ci.org/conda-forge/r-Matching-feedstock)
-[![Windows](https://img.shields.io/appveyor/ci/conda-forge/r-Matching-feedstock/master.svg?label=Windows)](https://ci.appveyor.com/project/conda-forge/r-Matching-feedstock/branch/master)
+[![Linux](https://img.shields.io/circleci/project/github/conda-forge/r-matching-feedstock/master.svg?label=Linux)](https://circleci.com/gh/conda-forge/r-matching-feedstock)
+[![OSX](https://img.shields.io/travis/conda-forge/r-matching-feedstock/master.svg?label=macOS)](https://travis-ci.org/conda-forge/r-matching-feedstock)
+[![Windows](https://img.shields.io/appveyor/ci/conda-forge/r-matching-feedstock/master.svg?label=Windows)](https://ci.appveyor.com/project/conda-forge/r-matching-feedstock/branch/master)
 
 Current release info
 ====================
