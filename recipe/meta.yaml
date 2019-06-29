@@ -1,5 +1,4 @@
-{% set version = '4.9-3' %}
-
+{% set version = '4.9-6' %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -8,25 +7,24 @@ package:
   version: {{ version|replace("-", "_") }}
 
 source:
-  fn: Matching_{{ version }}.tar.gz
   url:
     - {{ cran_mirror }}/src/contrib/Matching_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/Matching/Matching_{{ version }}.tar.gz
-  sha256: 1fbf346d75a079f5b23137dd7bc112207db8d64adfd197826ae6b5748600bc02
+  sha256: 8e0dced7d1242e52de68a6e3010484bb29eb0633733549c82a06e9c6508b66dc
 
 build:
   merge_build_host: True  # [win]
-  number: 1000
+  number: 0
   rpaths:
     - lib/R/lib/
     - lib/
 
-# Suggests: parallel, rgenoud (>= 2.12), rbounds
 requirements:
   build:
-    - {{ compiler('c') }}        # [not win]
-    - {{ compiler('cxx') }}      # [not win]
-    - {{native}}toolchain        # [win]
+    - {{ compiler('c') }}              # [not win]
+    - {{ compiler('m2w64_c') }}        # [win]
+    - {{ compiler('cxx') }}            # [not win]
+    - {{ compiler('m2w64_cxx') }}      # [win]
     - {{posix}}filesystem        # [win]
     - {{posix}}sed               # [win]
     - {{posix}}grep              # [win]
@@ -37,11 +35,9 @@ requirements:
     - {{posix}}make
     - {{posix}}coreutils         # [win]
     - {{posix}}zip               # [win]
-
   host:
     - r-base
     - r-mass >=7.2_1
-
   run:
     - r-base
     - {{native}}gcc-libs         # [win]
@@ -59,14 +55,27 @@ about:
     optimal balance based on a genetic search algorithm.  A variety of univariate and
     multivariate metrics to determine if balance has been obtained are also provided.
   license_family: GPL3
+  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
 
 extra:
-   recipe-maintainers:
-    - dpryan79
+  recipe-maintainers:
+    - conda-forge/r
     - MathiasHaudgaard
     - FrodePedersen
     - ArneKr
-    - Johanneskoester
-    - Bgruening
-    - Daler
-    - Jdblischak
+
+# Package: Matching
+# Version: 4.9-6
+# Date: 2019-04-07
+# Title: Multivariate and Propensity Score Matching with Balance Optimization
+# Author: Jasjeet Singh Sekhon <sekhon@berkeley.edu>
+# Maintainer: Jasjeet Singh Sekhon <sekhon@berkeley.edu>
+# Description: Provides functions for multivariate and propensity score matching  and for finding optimal balance based on a genetic search algorithm.  A variety of univariate and multivariate metrics to determine if balance has been obtained are also provided.
+# Depends: R (>= 2.6.0), MASS (>= 7.2-1), graphics, grDevices, stats
+# Suggests: parallel, rgenoud (>= 2.12), rbounds
+# License: GPL-3
+# URL: http://sekhon.berkeley.edu/matching
+# NeedsCompilation: yes
+# Packaged: 2019-05-07 21:02:01 UTC; sekhon
+# Repository: CRAN
+# Date/Publication: 2019-05-07 22:20:29 UTC
