@@ -35,6 +35,7 @@ requirements:
     - {{ posix }}make
     - {{ posix }}coreutils         # [win]
     - {{ posix }}zip               # [win]
+    - cross-r-base {{ r_base }}    # [build_platform != target_platform]
   host:
     - r-base
     - r-mass >=7.2_1
@@ -50,10 +51,11 @@ test:
 
 about:
   home: http://sekhon.berkeley.edu/matching
-  license: GPL-3
+  license: GPL-3.0-only
   summary: Provides functions for multivariate and propensity score matching  and for finding optimal balance based on a genetic search algorithm.  A variety of univariate and multivariate metrics to determine if balance has been obtained are also provided.
   license_family: GPL3
-  license_file: {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3
+  license_file:
+    - {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3
 
 extra:
   recipe-maintainers:
