@@ -1,4 +1,4 @@
-{% set version = "4.10-4" %}
+{% set version = "4.10-8" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,7 +10,7 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/Matching_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/Matching/Matching_{{ version }}.tar.gz
-  sha256: 7e0a388fc148ecea55320fb5633d102322bd26c4d851b6fa90a2ea6109664feb
+  sha256: 54412e2ddd1f5eeb189ffc653e4d3ead3e2f9c5c4fe516cfb1966abf69ada49a
 
 build:
   merge_build_host: true  # [win]
