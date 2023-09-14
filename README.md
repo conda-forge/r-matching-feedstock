@@ -3,6 +3,7 @@ About r-matching-feedstock
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/r-matching-feedstock/blob/main/LICENSE.txt)
 
+
 About r-matching
 ----------------
 
@@ -11,6 +12,7 @@ Home: http://sekhon.berkeley.edu/matching
 Package license: GPL-3.0-only
 
 Summary: Provides functions for multivariate and propensity score matching  and for finding optimal balance based on a genetic search algorithm.  A variety of univariate and multivariate metrics to determine if balance has been obtained are also provided.
+
 About r-matching
 ----------------
 
