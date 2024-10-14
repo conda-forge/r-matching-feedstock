@@ -213,5 +213,5 @@ Feedstock Maintainers
 * [@ArneKr](https://github.com/ArneKr/)
 * [@FrodePedersen](https://github.com/FrodePedersen/)
 * [@MathiasHaudgaard](https://github.com/MathiasHaudgaard/)
-* [@conda-forge/r](https://github.com/conda-forge/r/)
+* [@conda-forge/r](https://github.com/orgs/conda-forge/teams/r/)
 
